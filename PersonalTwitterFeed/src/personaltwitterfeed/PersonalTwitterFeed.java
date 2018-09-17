@@ -23,24 +23,54 @@ public class PersonalTwitterFeed {
      */
     public static void main(String[] args) {
         String[] tweets = new String[MAX_NUMBER_TWEETS];
-        Scanner keyboard = new Scanner(System.in);
+       // Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to your personal Twitter!");
         System.out.println("What's your name, tweeter?");
+       // String tweeterName = keyboard.nextLine();
+       newTweet(tweets);
+        getCurrentTimeStamp(tweets);
+    }
+    
+    
+   public static String getCurrentTimeStamp(String [] tweets){
+ 
+     String  date="";
+    
+               
+           
+           String pattern = "EEEEE dd MMMMM yyyy hh:mm:ss.SSSZ";
+SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+ date = simpleDateFormat.format(new Date());
+//System.out.println(date);
+           
+           
+                
+            
+
         
+        
+        
+       return date;
+    }
+   
+   public static void newTweet(String []tweets){  
+      
+       Scanner keyboard = new Scanner(System.in);
         String tweeterName = keyboard.nextLine();
-        
-        System.out.println("Nice to meet you " + tweeterName + "!");
-        System.out.println("Enter your tweets and I will add them to your timeline!");
-        
-        int numTweets = 0;
+         System.out.println("Nice to meet you " + tweeterName + "!");
+         System.out.println("Enter your tweets and I will add them to your timeline!");
+       int numTweets = 0;
         String [] allTimeFrames=new String[MAX_NUMBER_TWEETS];
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
             tweets[numTweets] = keyboard.nextLine();
             allTimeFrames[numTweets]=getCurrentTimeStamp(tweets);
+            System.out.println(allTimeFrames[numTweets]);
             numTweets++;
            
-        }
+        }    
+        System.out.println(numTweets);
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
             for(int i = 0; i < numTweets; i++) {
                 System.out.println("- " + tweets[i]+ "  "+allTimeFrames[i]);
@@ -57,31 +87,19 @@ public class PersonalTwitterFeed {
         
         }
         System.out.println("Your twitter feed is full");
-        getCurrentTimeStamp(tweets);
-    }
-    
-    
-   public static String getCurrentTimeStamp(String [] tweets){
- 
-     String  date="";
-    
-               
-           
-           String pattern = "EEEEE dd MMMMM yyyy hh:mm:ss.SSSZ";
-SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("da", "DK"));
-
- date = simpleDateFormat.format(new Date());
-System.out.println(date);
-           
-           
-                
-            
-
-        
-        
-        
-       return date;
-    }
+       
+       
+       
+       
+       
+       
+   }
+   
+   
+   
+   
+   
+   
 }
 
 
