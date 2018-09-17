@@ -7,6 +7,7 @@ package personaltwitterfeed;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Scanner;
  */
 public class PersonalTwitterFeed {
 
-    private static int MAX_NUMBER_TWEETS = 200;
+    private static int MAX_NUMBER_TWEETS = 4;
     
     /**
      * @param args the command line arguments
@@ -32,14 +33,18 @@ public class PersonalTwitterFeed {
         System.out.println("Enter your tweets and I will add them to your timeline!");
         
         int numTweets = 0;
+        String [] allTimeFrames=new String[MAX_NUMBER_TWEETS];
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
             tweets[numTweets] = keyboard.nextLine();
+            allTimeFrames[numTweets]=getCurrentTimeStamp(tweets);
             numTweets++;
-            
+           
+        }
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
             for(int i = 0; i < numTweets; i++) {
-                System.out.println("- " + tweets[i]);
+                System.out.println("- " + tweets[i]+ "  "+allTimeFrames[i]);
+                
             }
             
             System.out.println();
@@ -47,11 +52,36 @@ public class PersonalTwitterFeed {
             System.out.println();
             System.out.println();
             
-            if(numTweets < (MAX_NUMBER_TWEETS - 1))
+            if(numTweets < (MAX_NUMBER_TWEETS - 1)){
                 System.out.println("Enter your next tweet:");
-        }
         
+        }
         System.out.println("Your twitter feed is full");
+        getCurrentTimeStamp(tweets);
     }
     
+    
+   public static String getCurrentTimeStamp(String [] tweets){
+ 
+     String  date="";
+    
+               
+           
+           String pattern = "EEEEE dd MMMMM yyyy hh:mm:ss.SSSZ";
+SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("da", "DK"));
+
+ date = simpleDateFormat.format(new Date());
+System.out.println(date);
+           
+           
+                
+            
+
+        
+        
+        
+       return date;
+    }
 }
+
+
